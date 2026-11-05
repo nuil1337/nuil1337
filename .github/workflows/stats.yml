@@ -23,6 +23,10 @@ jobs:
         with:
           card: stats
           options: username=${{ github.repository_owner }}&hide_title=false&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=dracula&locale=en&hide_border=false
+          # count_private=true требует PAT с доступом ко всем приватным репозиториям
+          # (GITHUB_TOKEN экшена ограничен одним репозиторием и получает
+          # "Resource not accessible by integration"), поэтому генерация
+          # идёт через публичный инстанс, где приватные репо не считаются
           path: dist/stats.svg
           token: ${{ secrets.GITHUB_TOKEN }}
 
